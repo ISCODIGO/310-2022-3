@@ -2,19 +2,22 @@ public class PrimosV2 {
     static int instruccion;
 
     public static boolean calcular(int n) {
-        //instruccion = 0;
+        instruccion = 0;
 
         /*
             Instrucciones sencillas (fuera del for)
             ---------------------------------------
             1. return (cuenta si es dentro o no del for)
-            2. comprobar pares n % 2 == 0
-            3. obtener raiz cuadrada
-            4. convertir a entero
-            5. asignar limite
-            6. inicializacion del for
+            2. n % 2
+            3. comparar si es igual a cero
+            4. Math.sqrt
+            5. (int)
+            6. declarar limite
+            7. asignar limite
+            8. declarar i
+            9. asignar i
          */
-        instruccion += 6;
+        instruccion += 9;
 
         if (n % 2 == 0) {
             return (n == 2);  // 2 es primo, otro par no lo es
@@ -23,13 +26,14 @@ public class PrimosV2 {
         int limite = (int) Math.sqrt(n);  // sqrt(n) <= a n/2
 
         for (int i = 3; i <= limite; i += 2) {
+            instruccion += 4;
             /*
                 Intrucciones complejas (dentro del for)
-                1. comparacion i <= limite
-                2. incremento i += 2
-                3. comprobar si hay divisor n % i == 0
+                1. i <= limite
+                2. i += 2
+                3. n % i
+                4. comparar si es igual a cero
              */
-            instruccion += 3;
 
             if (n % i == 0) {
                 return false;

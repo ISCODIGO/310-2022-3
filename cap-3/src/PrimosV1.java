@@ -8,11 +8,13 @@ public class PrimosV1 {
             Instrucciones sencillas (fuera del for)
             ---------------------------------------
             1. return (cuenta si es dentro o no del for)
-            2. n - 1
-            3. asignar n - 1
-            4. int i = 2
+            2. declarar limite
+            3. n - 1
+            4. asignar a limite
+            5. declarar i
+            6. asignar i = 2
          */
-        instruccion += 4;
+        instruccion += 6;
 
         int limite = n - 1;  // no incluimos a n como divisor
 
@@ -21,9 +23,10 @@ public class PrimosV1 {
                 Intrucciones complejas (dentro del for)
                 1. comparacion i <= limite
                 2. incremento i++
-                3. comprobar si hay divisor n % i == 0
+                3. n % i
+                4. igual a cero
              */
-            instruccion += 3;
+            instruccion += 4;
 
             if (n % i == 0) {
                 return false;
