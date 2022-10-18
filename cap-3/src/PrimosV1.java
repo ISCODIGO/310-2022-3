@@ -1,4 +1,4 @@
-public class Primo {
+public class PrimosV1 {
     static int instruccion;
 
     public static boolean calcular(int n) {
@@ -8,25 +8,19 @@ public class Primo {
             Instrucciones sencillas (fuera del for)
             ---------------------------------------
             1. return (cuenta si es dentro o no del for)
-            2. comprobar pares n % 2 == 0
-            3. obtener raiz cuadrada
-            4. convertir a entero
-            5. asignar limite
-            6. inicializacion del for
+            2. n - 1
+            3. asignar n - 1
+            4. int i = 2
          */
-        instruccion += 6;
+        instruccion += 4;
 
-        if (n % 2 == 0) {
-            return (n == 2);  // 2 es primo, otro par no lo es
-        }
+        int limite = n - 1;  // no incluimos a n como divisor
 
-        int limite = (int) Math.sqrt(n);  // sqrt(n) <= a n/2
-
-        for (int i = 3; i <= limite; i += 2) {
+        for (int i = 2; i <= limite; i++) {
             /*
                 Intrucciones complejas (dentro del for)
                 1. comparacion i <= limite
-                2. incremento i += 2
+                2. incremento i++
                 3. comprobar si hay divisor n % i == 0
              */
             instruccion += 3;
@@ -38,7 +32,6 @@ public class Primo {
 
         return true;  // si no hay un divisor, es primo
     }
-
     public static void main(String[] args) {
         assert calcular(2) : "2 es primo";
         System.out.printf("Para n=2 instruc: %d%n", instruccion);
