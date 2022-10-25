@@ -1,39 +1,39 @@
-public class PrimosV2 {
+package bucles;/*
+
+Complejidad tiempo: T(n) es O(n)
+Complejidad espacio: S(n) es O(1)
+
+ */
+
+public class PrimosV1 {
     static int instruccion;
 
     public static boolean calcular(int n) {
         instruccion = 0;
 
         /*
-            Instrucciones sencillas (fuera del for)
+            Fibonacci.instrucciones sencillas (fuera del for)
             ---------------------------------------
             1. return (cuenta si es dentro o no del for)
-            2. n % 2
-            3. comparar si es igual a cero
-            4. Math.sqrt
-            5. (int)
-            6. declarar limite
-            7. asignar limite
-            8. declarar i
-            9. asignar i
+            2. declarar limite
+            3. n - 1
+            4. asignar a limite
+            5. declarar i
+            6. asignar i = 2
          */
-        instruccion += 9;
+        instruccion += 6;
 
-        if (n % 2 == 0) {
-            return (n == 2);  // 2 es primo, otro par no lo es
-        }
+        int limite = n - 1;  // no incluimos a n como divisor
 
-        int limite = (int) Math.sqrt(n);  // sqrt(n) <= a n/2
-
-        for (int i = 3; i <= limite; i += 2) {
-            instruccion += 4;
+        for (int i = 2; i <= limite; i++) {
             /*
                 Intrucciones complejas (dentro del for)
-                1. i <= limite
-                2. i += 2
+                1. comparacion i <= limite
+                2. incremento i++
                 3. n % i
-                4. comparar si es igual a cero
+                4. igual a cero
              */
+            instruccion += 4;
 
             if (n % i == 0) {
                 return false;
@@ -42,7 +42,6 @@ public class PrimosV2 {
 
         return true;  // si no hay un divisor, es primo
     }
-
     public static void main(String[] args) {
         assert calcular(2) : "2 es primo";
         System.out.printf("Para n=2 instruc: %d%n", instruccion);

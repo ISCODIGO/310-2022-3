@@ -1,0 +1,20 @@
+Fibonacci normal O(2^n)
+
+N ->          0 Rec:          1
+N ->          1 Rec:          1
+N ->          2 Rec:          3
+N ->          5 Rec:         15
+N ->          9 Rec:        109
+N ->         12 Rec:        465
+N ->         20 Rec:      21891
+N ->         30 Rec:    2692537
+
+Fibonacci mejorado con memorizacion
+N ->          0 Rec:          1
+N ->          1 Rec:          1
+N ->          2 Rec:          3
+N ->          5 Rec:          9
+N ->          9 Rec:         17
+N ->         12 Rec:         23
+N ->         20 Rec:         39
+N ->         30 Rec:         59

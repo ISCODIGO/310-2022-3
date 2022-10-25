@@ -1,3 +1,5 @@
+package bucles;
+
 public class Bucles {
     public static void main(String[] args) {
         int[] ns = new int[] {
@@ -30,37 +32,37 @@ public class Bucles {
 
     O(n)
     for (int i = 1; i <= n; i++) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(n)
     for (int i = 1; i <= n; i += 2) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(log n)
     for (int i = 1; i <= n; i *= 2) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(log n)
     for (int i = N; i >= 1; i /= 2) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(n)
     for (int i = 1; i <= n; i++) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     for (int j = 1; j <= n; j++) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(n^2)
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-            instrucciones++;
+            Fibonacci.instrucciones++;
         }
     }
 
@@ -68,26 +70,26 @@ public class Bucles {
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
             for (int k = 1; k <= n; k++) {
-                instrucciones++;
+                Fibonacci.instrucciones++;
             }
         }
     }
 
     O(2^n)
     for (int j = 1; j <= Math.pow(2, n); j++) {
-        instrucciones++;
+        Fibonacci.instrucciones++;
     }
 
     O(n*m) ~ O(n^2)
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            instrucciones++;
+            Fibonacci.instrucciones++;
         }
     }
 
 
     linear search O(n)
-    bilinear search O(n) <- ejecuta menos iteraciones pero tiene las mismas instrucciones
+    bilinear search O(n) <- ejecuta menos iteraciones pero tiene las mismas Fibonacci.instrucciones
     binary search O(log n) <- [requiere que los datos esten ordenados]
 
     primos v1 es O(n); v7 es O(n^1/2)
