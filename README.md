@@ -1,4 +1,4 @@
-# Repositorio para IS-210 (III-PAC 2022)
+# Repositorio para Algoritmos y Estructuras de Datos (III-PAC 2022)
 ## Primer Parcial
 ### Cap 3 
 - Para las pruebas de bucles es necesario agregar en los VM options el parametro `-ea`.
