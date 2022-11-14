@@ -4,9 +4,9 @@
     Copyright 2008-2011 by Clifford A. Shaffer
 */
 
-/** Singly linked list node */
-package LList;
+package stack.linked;
 
+/** Singly linked list node */
 class Link<E> {
   private E element;        // Value for this node
   private Link<E> next;     // Pointer to next node in list

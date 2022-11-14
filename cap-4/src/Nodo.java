@@ -1,16 +1,32 @@
-import java.util.ArrayList;
-
 public class Nodo<E> {
     E dato;  // atributo
+    Nodo siguiente;
 
     public Nodo(E dato) {
         // this.dato -> atributo
         // dato -> argumento de la funcion
         this.dato = dato;
+        this.siguiente = null;
+    }
+
+    public Nodo(Nodo n) {
+        this.dato = (E)n.dato;
+        this.siguiente = n.siguiente;
     }
 
     public E getDato() {
         return this.dato;
+    }
+
+    public void setDato(E dato) {
+        this.dato = dato;
+    }
+    public void setSiguiente(Nodo n) {
+        this.siguiente = n;
+    }
+
+    public Nodo getSiguiente() {
+        return this.siguiente;
     }
 
     @Override
@@ -23,10 +39,24 @@ public class Nodo<E> {
         Nodo<String> n2 = new Nodo("hola");
         Nodo<Character> n3 = new Nodo<>('A');
 
-        int x = n1.getDato();
-        String s = n2.getDato();
-        char c = n3.getDato();
+        int x = 10;
 
-        ArrayList<Integer> list = new ArrayList<>();
+        // Referencia / copia superficial
+        Nodo copia = n1;
+        //copia.setDato(50);
+
+        Nodo clon = new Nodo(n1);
+        clon.setDato(60);
+        //System.out.println(n1);
+
+        n1.setSiguiente(n2);  // n1 -> n2 ->
+        n1.getSiguiente().setDato(123);
+
+        n2.setSiguiente(n3); // n1 > n2 > n3 >
+        //System.out.println(n2);
+
+        for(Nodo i = n1; i != null; i = i.getSiguiente()) {
+            System.out.println(i);
+        }
     }
 }
