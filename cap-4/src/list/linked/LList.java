@@ -10,7 +10,9 @@
 /** Linked list implementation */
 package list.linked;
 
-class LList<E> implements list.List<E> {
+import list.List;
+
+class LList<E> implements List<E> {
     protected Link<E> curr;       // Access to current element
     int cnt;              // Size of list
     private Link<E> head;         // Pointer to list header

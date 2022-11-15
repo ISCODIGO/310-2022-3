@@ -8,7 +8,7 @@ package stack.linked;
 import stack.Stack;
 
 /** Linked stack implementation */
-class LStack<E> implements stack.Stack<E> {
+class LStack<E> implements Stack<E> {
   private Link<E> top;          // Pointer to first element
   private int size;		// Number of elements
 

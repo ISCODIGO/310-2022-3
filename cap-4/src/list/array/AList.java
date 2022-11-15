@@ -9,7 +9,9 @@
 /** Array-based list implementation */
 package list.linked.AList;
 
-class AList<E> implements list.List<E> {
+import list.List;
+
+class AList<E> implements List<E> {
     private static final int defaultSize = 10; // Default size
     private final int maxSize;        // Maximum size of list
     private int listSize;       // Current # of list items

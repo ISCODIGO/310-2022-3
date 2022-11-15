@@ -5,8 +5,10 @@
 */
 package stack.array;
 
+import stack.Stack;
+
 /** Array-based stack implementation */
-class AStack<E> implements stack.Stack<E> {
+class AStack<E> implements Stack<E> {
 
   private static final int defaultSize = 10;
 
