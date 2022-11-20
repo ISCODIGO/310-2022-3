@@ -19,10 +19,10 @@ public interface Stack<E> {
 
   /** Remove and return the element at the top of the stack.
       @return The element at the top of the stack. */
-  public E pop();
+  public E pop() throws Exception;
 
   /** @return A copy of the top element. */
-  public E topValue();
+  public E topValue() throws Exception;
 
   /** @return The number of elements in the stack. */
   public int length();

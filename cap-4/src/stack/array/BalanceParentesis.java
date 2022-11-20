@@ -13,7 +13,7 @@ public class BalanceParentesis {
     public static final char CIERRE = ')';
 
     public static boolean probar(String s) {
-        AStack<Character> pila = new AStack<>(s.length());
+        AStackCustom<Character> pila = new AStackCustom<>(s.length());
 
         for(int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == APERTURA) {

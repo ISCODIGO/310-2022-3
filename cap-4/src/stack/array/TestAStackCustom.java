@@ -2,9 +2,9 @@ package stack.array;
 
 import java.util.Arrays;
 
-public class Test {
+public class TestAStackCustom {
     public static void main(String[] args) {
-        AStack<Integer> pilaEnteros = new AStack<>(5);
+        AStackCustom<Integer> pilaEnteros = new AStackCustom<>(5);
         int[] numeros = new int[]{10, 20, 30, 40, 50};
 
         System.out.println("Orden de push...");

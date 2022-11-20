@@ -43,7 +43,7 @@ class LQueue<E> implements Queue<E> {
 
     /** Remove and return element from front */
     public E dequeue() {
-        assert size != 0 : "queue.Queue is empty";
+        assert size != 0 : "Queue is empty";
         E it = front.next().element();  // Store dequeued value
         front.setNext(front.next().next());  // Advance front
         if (front.next() == null) rear = front; // Last Object
@@ -53,11 +53,11 @@ class LQueue<E> implements Queue<E> {
 
     /** @return Front element */
     public E frontValue() {
-        assert size != 0 : "queue.Queue is empty";
+        assert size != 0 : "Queue is empty";
         return front.next().element();
     }
 
-    /** @return queue.Queue size */
+    /** @return Queue size */
     public int length() {
         return size;
     }

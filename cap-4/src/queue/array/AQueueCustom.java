@@ -9,22 +9,22 @@ package queue.array;
 import queue.Queue;
 
 /** Array-based queue implementation */
-class AQueue<E> implements Queue<E> {
+class AQueueCustom<E> implements Queue<E> {
 
     private static final int defaultSize = 10;
     private final int maxSize;         // Maximum size of queue
     private int front;           // Index of front element
     private int rear;            // Index of rear element
-    private final E[] listArray;       // Array holding queue elements
+    final E[] listArray;       // Array holding queue elements
 
     /** Constructors */
-    AQueue() {
+    AQueueCustom() {
         this(defaultSize);
     }
 
     @SuppressWarnings("unchecked")
         // For generic array
-    AQueue(int size) {
+    AQueueCustom(int size) {
         maxSize = size + 1;          // One extra space is allocated
         rear = 0;
         front = 1;
@@ -37,28 +37,32 @@ class AQueue<E> implements Queue<E> {
         front = 1;
     }
 
+    private int nextPos(int pos) {
+        return (pos + 1) % maxSize;
+    }
+
     /** Put "it" in queue */
     public void enqueue(E it) {
-        assert ((rear + 2) % maxSize) != front : "Queue is full";
-        rear = (rear + 1) % maxSize; // Circular increment
+        assert nextPos(nextPos(rear)) != front : "queue.Queue is full";
+        rear = nextPos(rear);  // Circular increment
         listArray[rear] = it;
     }
 
     /** Remove and return front value */
     public E dequeue() {
-        assert length() != 0 : "Queue is empty";
+        assert length() != 0 : "queue.Queue is empty";
         E it = listArray[front];
-        front = (front + 1) % maxSize; // Circular increment
+        front = nextPos(front); // Circular increment
         return it;
     }
 
     /** @return Front value */
     public E frontValue() {
-        assert length() != 0 : "Queue is empty";
+        assert length() != 0 : "queue.Queue is empty";
         return listArray[front];
     }
 
-    /** @return Queue size */
+    /** @return queue.Queue size */
     public int length() {
         return ((rear + maxSize) - front + 1) % maxSize;
     }
@@ -74,9 +78,12 @@ class AQueue<E> implements Queue<E> {
     public String toString() {
         StringBuffer out = new StringBuffer((length() + 1) * 4);
         out.append("< ");
-        for (int i = front; i != (rear + 1) % maxSize; i++) {
-            out.append(listArray[i]);
+
+        int pos = front;
+        while (pos != nextPos(rear)) {
+            out.append(listArray[pos]);
             out.append(" ");
+            pos = nextPos(pos);
         }
         out.append(">");
         return out.toString();
