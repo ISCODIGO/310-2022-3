@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="251.0" prefWidth="516.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.player.PlayerController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Reproductor de audio">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="buttonOpenFile" mnemonicParsing="false" onAction="#openFileClick" text="Open file" />
+            <Separator orientation="VERTICAL" prefHeight="10.0" />
+            <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#playClick" text="Play" />
+            <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#pauseClick" text="Pause" />
+            <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#stopClick" text="Stop" />
+        </items>
+      </ToolBar>
+   </top>
+   <bottom>
+      <TextArea fx:id="textLogger" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
