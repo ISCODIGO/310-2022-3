@@ -1,5 +1,7 @@
 package com.example.player;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -32,6 +34,7 @@ public class PlayerController {
             textLogger.appendText("\tReproducir archivo\n");
             musicPlayer.startPlaying(this.file.getAbsolutePath());
         }
+        paused = false;  // impedir reanudacion
     }
 
     @FXML protected void stopClick() {
@@ -48,14 +51,25 @@ public class PlayerController {
             textLogger.appendText("\tPausar archivo\n");
             musicPlayer.pause();
         }
-
         paused = !paused;
     }
 
     @FXML protected void openFileClick() {
+        FileChooser.ExtensionFilter fileExtensions =
+                new FileChooser.ExtensionFilter("MP3 Files", "*.mp3");
+
         fileChooser = new FileChooser();
         fileChooser.setTitle("Elegir un archivo");
+        fileChooser.getExtensionFilters().add(fileExtensions);
         this.file = fileChooser.showOpenDialog(this.stage);
-        textLogger.appendText(String.format("Archivo: %s%n", this.file.getAbsolutePath()));
+
+        if (this.file != null) {
+            textLogger.appendText(String.format("Archivo: %s%n", this.file.getAbsolutePath()));
+        }
+    }
+
+    @FXML public void exitApplication() {
+        musicPlayer.stop();
+        Platform.exit();
     }
 }

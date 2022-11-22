@@ -16,6 +16,7 @@ public class PlayerApp extends Application {
         controller.setStage(primaryStage);
 
         Scene scene = new Scene(root, 600, 400);
+        primaryStage.setOnHidden(e -> controller.exitApplication());
         primaryStage.setTitle("Reproductor MP3");
         primaryStage.setScene(scene);
         primaryStage.show();
