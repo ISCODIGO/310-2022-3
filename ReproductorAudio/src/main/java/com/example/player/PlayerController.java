@@ -1,14 +1,13 @@
 package com.example.player;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
+import java.util.List;
 
 public class PlayerController {
     @FXML Button buttonPlay;
@@ -16,9 +15,10 @@ public class PlayerController {
     @FXML Button buttonPause;
     @FXML Button buttonOpenFile;
     @FXML TextArea textLogger;
+    @FXML TextArea textFiles;
     FileChooser fileChooser;
     Stage stage;
-    File file;
+    List<File> files;
 
     MusicPlayer musicPlayer = new MusicPlayer();
     boolean paused = false;
@@ -27,28 +27,40 @@ public class PlayerController {
         this.stage = stage;
     }
 
+    public void startButtons() {
+        this.buttonPlay.setDisable(true);
+        this.buttonStop.setDisable(true);
+        this.buttonPause.setDisable(true);
+    }
+
     @FXML protected void playClick() {
-        if (this.file == null) {
-            textLogger.appendText("No hay archivo cargado\n");
+        if (this.files.size() == 0) {
+            textLogger.appendText("No hay archivos cargados\n");
         } else {
-            textLogger.appendText("\tReproducir archivo\n");
-            musicPlayer.startPlaying(this.file.getAbsolutePath());
+            textLogger.appendText("Reproducir archivo\n");
+            // TODO: Solo carga el primer archivo
+            musicPlayer.startPlaying(this.files.get(0).getAbsolutePath());
         }
         paused = false;  // impedir reanudacion
+        buttonPlay.setDisable(true);
+        buttonPause.setDisable(false);
+        buttonStop.setDisable(false);
     }
 
     @FXML protected void stopClick() {
-        textLogger.appendText("\tDetener archivo file\n");
+        textLogger.appendText("Detener archivo file\n");
         musicPlayer.stop();
-        paused = true;  // permitir la posibilidad de reanudar
+        buttonStop.setDisable(true);
+        buttonPause.setDisable(true);
+        buttonPlay.setDisable(false);
     }
 
     @FXML protected void pauseClick() {
         if (paused) {
-            textLogger.appendText("\tReanudar archivo\n");
+            textLogger.appendText("Reanudar archivo\n");
             musicPlayer.resume();
         } else {
-            textLogger.appendText("\tPausar archivo\n");
+            textLogger.appendText("Pausar archivo\n");
             musicPlayer.pause();
         }
         paused = !paused;
@@ -61,11 +73,12 @@ public class PlayerController {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Elegir un archivo");
         fileChooser.getExtensionFilters().add(fileExtensions);
-        this.file = fileChooser.showOpenDialog(this.stage);
+        this.files = fileChooser.showOpenMultipleDialog(this.stage);
 
-        if (this.file != null) {
-            textLogger.appendText(String.format("Archivo: %s%n", this.file.getAbsolutePath()));
+        for (File file : this.files) {
+            textFiles.appendText(file.getAbsolutePath() + "\n");
         }
+        this.buttonPlay.setDisable(false);
     }
 
     @FXML public void exitApplication() {
