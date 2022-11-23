@@ -63,7 +63,7 @@ public class LListLDC<E> implements List<E> {
      * Append "it" to list
      */
     public void append(E it) {
-        tail = tail.setNext(new LinkLDC<E>(it, null));
+        tail = tail.setNext(new LinkLDC<E>(it, null,null));
         cnt++;
     }
 

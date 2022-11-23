@@ -15,9 +15,9 @@ class LinkLDC<E> {
     private LinkLDC<E> prev;
 
     // Constructors
-    LinkLDC(E it, LinkLDC<E> prev, LinkLDC<E> nextval) {
+    LinkLDC(E it, LinkLDC<E> preval, LinkLDC<E> nextval) {
         element = it;
-        prev = prev;
+        prev = preval;
         next = nextval;
     }
 
