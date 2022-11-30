@@ -2,6 +2,7 @@ package com.example.player;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -19,7 +20,6 @@ public class PlayerController {
     FileChooser fileChooser;
     Stage stage;
     List<File> files;
-
     MusicPlayer musicPlayer = new MusicPlayer();
     boolean paused = false;
 
@@ -34,7 +34,7 @@ public class PlayerController {
     }
 
     @FXML protected void playClick() {
-        if (this.files.size() == 0) {
+        if (this.files == null || this.files.size() == 0) {
             textLogger.appendText("No hay archivos cargados\n");
         } else {
             textLogger.appendText("Reproducir archivo\n");
@@ -57,11 +57,11 @@ public class PlayerController {
 
     @FXML protected void pauseClick() {
         if (paused) {
-            textLogger.appendText("Reanudar archivo\n");
             musicPlayer.resume();
+            textLogger.appendText("Reanudar archivo\n");
         } else {
-            textLogger.appendText("Pausar archivo\n");
             musicPlayer.pause();
+            textLogger.appendText("Pausar archivo\n");
         }
         paused = !paused;
     }
@@ -75,6 +75,14 @@ public class PlayerController {
         fileChooser.getExtensionFilters().add(fileExtensions);
         this.files = fileChooser.showOpenMultipleDialog(this.stage);
 
+        if (this.files == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("No se especifico ningun archivo");
+            alert.showAndWait();
+            return;
+        }
+
         for (File file : this.files) {
             textFiles.appendText(file.getAbsolutePath() + "\n");
         }
@@ -82,6 +90,7 @@ public class PlayerController {
     }
 
     @FXML public void exitApplication() {
+        System.out.println("Cerrando app");
         musicPlayer.stop();
         Platform.exit();
     }
