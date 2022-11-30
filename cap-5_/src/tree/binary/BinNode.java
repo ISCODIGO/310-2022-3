@@ -4,7 +4,7 @@
  * by Clifford A. Shaffer
  * Copyright 2008-2011 by Clifford A. Shaffer
  */
-package tree.bin;
+package tree.binary;
 
 /** ADT for binary tree nodes */
 public interface BinNode<E> {
